@@ -12,4 +12,16 @@ class MenuController extends Controller
     {
         return new MenusCollection(Menu::with(['submenu'])->get());
     }
+
+    public function update(Request $request, $id){
+
+        $input = ($request->all() == null ? json_decode($request->getContent(), true) : $request->all());
+
+        $menu = Menu::find($id);
+        $menu->header = $input['menuheader'];
+        $menu->body = $input['menubody'];
+        $menu->save();
+
+        return new MenusCollection(Menu::with(['submenu'])->get());
+    }
 }
