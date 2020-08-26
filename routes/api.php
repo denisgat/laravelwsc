@@ -23,6 +23,8 @@ Route::middleware('auth:api')->get('/user', function (Request $request) {
 
 Route::group(['middleware' => 'auth:api'], function(){
     Route::post('/logout', 'AuthController@logout');
+
+    Route::get('/home/menuedit/{id}', 'MenuController@edit');
 });
 
 Route::post('/login', 'AuthController@login');
