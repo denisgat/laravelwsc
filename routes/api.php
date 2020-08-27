@@ -24,6 +24,7 @@ Route::middleware('auth:api')->get('/user', function (Request $request) {
 Route::group(['middleware' => 'auth:api'], function(){
     Route::post('/logout', 'AuthController@logout');
     Route::put('/menu/update/{id}', 'MenuController@update');
+    Route::put('/submenu/update/{id}', 'SubmenuController@update');
 });
 
 Route::post('/login', 'AuthController@login');
